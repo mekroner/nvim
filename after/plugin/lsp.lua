@@ -3,6 +3,7 @@ require('mason-lspconfig').setup({
     ensure_installed = {
         'lua_ls',
         'rust_analyzer',
+        'pyright',
     }
 })
 
@@ -45,6 +46,10 @@ lspcfg.rust_analyzer.setup {
             }
         }
     }
+}
+
+lspcfg.pyright.setup {
+    filetypes = { "python" },
 }
 
 -- Global mappings.

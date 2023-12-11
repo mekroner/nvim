@@ -7,8 +7,8 @@ vim.keymap.set("n","<leader>pv", vim.cmd.Ex)
 vim.keymap.set("x","<leader>p", [["_dP]])
 
 -- Copy to Clipboard
-vim.keymap.set({"n", "v"},"<leader>y",[[+y]])
-vim.keymap.set("n","<leader>Y",[[+Y]])
+vim.keymap.set({"n", "v"},"<leader>y",[["+y]])
+vim.keymap.set("n","<leader>Y",[["+Y]])
 
 -- Buffer Navigation
 vim.keymap.set("n","<leader>bd", vim.cmd.bdelete)
