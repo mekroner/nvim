@@ -52,6 +52,9 @@ lspcfg.pyright.setup {
     filetypes = { "python" },
 }
 
+lspcfg.clangd.setup {
+}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float)
