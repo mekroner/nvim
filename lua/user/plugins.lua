@@ -41,6 +41,13 @@ local plugins = {
     -- the goat
     'tpope/vim-commentary',
     'tpope/vim-surround',
+
+
+
+    'lukas-reineke/indent-blankline.nvim',
+
+    'simrat39/symbols-outline.nvim',
+    'lewis6991/gitsigns.nvim',
 }
 
 local opts = {}

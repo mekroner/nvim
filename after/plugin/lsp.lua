@@ -52,6 +52,12 @@ lspcfg.pyright.setup {
     filetypes = { "python" },
 }
 
+lspcfg.ocamllsp.setup {
+    cmd = { "ocamllsp" },
+    filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+    root_dir = lspcfg.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
+}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float)
