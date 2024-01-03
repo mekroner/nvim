@@ -4,6 +4,7 @@ require('mason-lspconfig').setup({
         'lua_ls',
         'rust_analyzer',
         'pyright',
+        'clangd',
     }
 })
 
@@ -43,7 +44,7 @@ lspcfg.rust_analyzer.setup {
             },
             checkOnSave = {
                 command = "clippy",
-            }
+            },
         }
     }
 }
@@ -57,6 +58,8 @@ lspcfg.ocamllsp.setup {
     filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
     root_dir = lspcfg.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
 }
+
+lspcfg.clangd.setup { }
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -88,7 +91,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<space>f', function()
+        vim.keymap.set('n', '<leader>fm', function()
             vim.lsp.buf.format { async = true }
         end, opts)
     end,
