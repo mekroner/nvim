@@ -61,6 +61,10 @@ lspcfg.ocamllsp.setup {
 
 lspcfg.clangd.setup { }
 
+lspcfg.wgsl_analyzer.setup {
+    filetypes = { "wgls" },
+}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float)
