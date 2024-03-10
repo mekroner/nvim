@@ -62,7 +62,7 @@ lspcfg.ocamllsp.setup {
 lspcfg.clangd.setup { }
 
 lspcfg.wgsl_analyzer.setup {
-    filetypes = { "wgls" },
+    filetypes = { "wgsl" },
 }
 
 -- Global mappings.
