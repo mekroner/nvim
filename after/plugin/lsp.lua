@@ -65,12 +65,15 @@ lspcfg.wgsl_analyzer.setup {
     filetypes = { "wgsl" },
 }
 
+lspcfg.tsserver.setup{}
+lspcfg.cssls.setup{}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 vim.diagnostic.config({
     virtual_text = true
 })

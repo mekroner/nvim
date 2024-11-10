@@ -13,9 +13,16 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     -- colorscheme
-    { 'rose-pine/neovim',        as = 'rose-pine' },
+    { 'rose-pine/neovim',   as = 'rose-pine' },
+    { '0xstepit/flow.nvim', as = 'flow' },
+    -- { dir='~/.config/astolfo.nvim/', as = 'astolfo' },
     'nvim-treesitter/nvim-treesitter',
     --    -- completion
+    {
+        'stevearc/oil.nvim',
+        opts = {},
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+    },
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-path',
@@ -24,12 +31,13 @@ local plugins = {
     -- 'f3fora/cmp-spell',
 
     'nvim-tree/nvim-web-devicons',
+    -- telescope
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.4',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
-    { 'akinsho/bufferline.nvim', version = "*",   dependencies = 'nvim-tree/nvim-web-devicons' },
+    { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
 
     -- luasnip
     "saadparwaiz1/cmp_luasnip",
@@ -47,7 +55,6 @@ local plugins = {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
-
     'lukas-reineke/indent-blankline.nvim',
 
     'simrat39/symbols-outline.nvim',
