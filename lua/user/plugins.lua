@@ -12,17 +12,17 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    -- colorscheme
+    ---- colorscheme
     { 'rose-pine/neovim',   as = 'rose-pine' },
     { '0xstepit/flow.nvim', as = 'flow' },
     -- { dir='~/.config/astolfo.nvim/', as = 'astolfo' },
     'nvim-treesitter/nvim-treesitter',
-    --    -- completion
     {
         'stevearc/oil.nvim',
         opts = {},
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
+    ----    -- completion
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-cmdline',
     'hrsh7th/cmp-path',
@@ -39,15 +39,15 @@ local plugins = {
     },
     { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
 
-    -- luasnip
+    ---- luasnip
     "saadparwaiz1/cmp_luasnip",
     'L3MON4D3/LuaSnip',
     "rafamadriz/friendly-snippets",
-    --lsp
+    ----lsp
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
-    -- the goat
+    ---- the goat
     'tpope/vim-commentary',
     'tpope/vim-surround',
 
@@ -59,6 +59,7 @@ local plugins = {
 
     'simrat39/symbols-outline.nvim',
     'lewis6991/gitsigns.nvim',
+    'HiPhish/rainbow-delimiters.nvim'
 }
 
 local opts = {}
