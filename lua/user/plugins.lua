@@ -59,7 +59,12 @@ local plugins = {
 
     'simrat39/symbols-outline.nvim',
     'lewis6991/gitsigns.nvim',
-    'HiPhish/rainbow-delimiters.nvim'
+    'HiPhish/rainbow-delimiters.nvim',
+
+    -- code outline
+    'stevearc/aerial.nvim',
+    'github/copilot.vim',
+
 }
 
 local opts = {}

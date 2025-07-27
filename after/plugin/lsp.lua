@@ -1,21 +1,22 @@
 require('mason').setup()
-require('mason-lspconfig').setup({
-    ensure_installed = {
-        'lua_ls',
-        'rust_analyzer',
-        'pyright',
-        'clangd',
-    }
-})
-
-
+local mlsp = require('mason-lspconfig')
 local lspcfg = require('lspconfig')
 local lsp_defaults = lspcfg.util.default_config
 
+mlsp.setup({
+    ensure_installed = {
+        'lua_ls',
+        -- 'rust_analyzer',
+        -- 'pyright',
+        -- 'clangd',
+    },
+    automatic_installation = true,
+})
+
 lsp_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lsp_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
+    'force',
+    lsp_defaults.capabilities,
+    require('cmp_nvim_lsp').default_capabilities()
 )
 
 lspcfg.lua_ls.setup {
@@ -34,39 +35,58 @@ lspcfg.lua_ls.setup {
     }
 }
 
-lspcfg.rust_analyzer.setup {
-    filetypes = { "rust" },
-    root_dir = lspcfg.util.root_pattern("Cargo.toml"),
-    settings = {
-        ['rust_analyzer'] = {
-            cargo = {
-                allFeatures = true,
-            },
-            checkOnSave = {
-                command = "clippy",
-            },
-        }
-    }
-}
+-- lspcfg.rust_analyzer.setup {
+--     filetypes = { "rust" },
+--     root_dir = lspcfg.util.root_pattern("Cargo.toml"),
+--     settings = {
+--         ['rust_analyzer'] = {
+--             cargo = {
+--                 allFeatures = true,
+--             },
+--             checkOnSave = {
+--                 command = "clippy",
+--             },
+--         }
+--     }
+-- }
 
-lspcfg.pyright.setup {
-    filetypes = { "python" },
-}
+-- lspcfg.pyright.setup {
+--     filetypes = { "python" },
+-- }
 
-lspcfg.ocamllsp.setup {
-    cmd = { "ocamllsp" },
-    filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
-    root_dir = lspcfg.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
-}
+-- lspcfg.ocamllsp.setup {
+--     cmd = { "ocamllsp" },
+--     filetypes = { "ocaml", "ocaml.menhir", "ocaml.interface", "ocaml.ocamllex", "reason", "dune" },
+--     root_dir = lspcfg.util.root_pattern("*.opam", "esy.json", "package.json", ".git", "dune-project", "dune-workspace"),
+-- }
 
-lspcfg.clangd.setup { }
+-- lspcfg.clangd.setup { }
 
-lspcfg.wgsl_analyzer.setup {
-    filetypes = { "wgsl" },
-}
+-- lspcfg.wgsl_analyzer.setup {
+--     filetypes = { "wgsl" },
+-- }
 
-lspcfg.tsserver.setup{}
-lspcfg.cssls.setup{}
+-- lspcfg.ts_ls.setup{}
+-- lspcfg.cssls.setup{}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local ok_cmp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if ok_cmp then
+    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+end
+
+-- 3) Grab the list of all servers Mason has installed
+local installed = mlsp.get_installed_servers()
+
+-- 4) Loop and call setup on each one
+for _, name in ipairs(installed) do
+    lspcfg[name].setup({
+        capabilities = capabilities,
+        -- you can define a common on_attach here if you like:
+        -- on_attach = function(client, bufnr) … end,
+    })
+end
+
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
